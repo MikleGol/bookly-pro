@@ -35,6 +35,7 @@ flutter:
     - assets/social/
     - assets/services/
     - assets/profile/
+    - assets/system/
 
 
 flutter_launcher_icons:
