@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'bookly_colors.dart';
 import 'screens/splash_screen.dart';
+import 'data/app_data.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppData.load();
   runApp(const MyApp());
 }
 
@@ -11,9 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
   }
 }

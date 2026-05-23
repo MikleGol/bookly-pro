@@ -1,7 +1,7 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:flutter/material.dart';
 import '../models/category.dart';
-import '../data.dart';
+import '../data/app_data.dart';
 
 class CategoryCard extends StatelessWidget {
   final Category category;
@@ -10,8 +10,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final numServices = Data.services
-        .where((service) => service.category == category)
+    final numServices = AppData.services
+        .where((service) => service.categoryId == category.id)
         .length;
 
     return InkWell(

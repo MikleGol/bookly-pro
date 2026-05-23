@@ -1,4 +1,4 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/screens/home_shell.dart';
 import 'package:bookly_pro/widgets/primary_button.dart';
 import 'package:bookly_pro/widgets/secondary_button.dart';

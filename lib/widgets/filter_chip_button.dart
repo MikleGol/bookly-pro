@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 
 class FilterChipButton extends StatelessWidget {
   final String text;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 import '../models/service.dart';
 
 class VerticalCard extends StatelessWidget {

@@ -10,4 +10,13 @@ class Profile {
     required this.email,
     required this.imagePath,
   });
+
+  factory Profile.fromJson(Map<String, dynamic> json) {
+    return Profile(
+      name: json['name'],
+      surname: json['surname'],
+      email: json['email'],
+      imagePath: json['imagePath'],
+    );
+  }
 }

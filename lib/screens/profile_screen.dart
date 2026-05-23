@@ -1,9 +1,9 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:flutter/material.dart';
 import '../models/profile.dart';
-import '../data.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 import '../widgets/profile_tile.dart';
+import '../data/app_data.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -26,13 +26,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   CircleAvatar(
                     radius: 44,
-                    backgroundImage: AssetImage(Data.profile.imagePath),
+                    backgroundImage: AssetImage(AppData.profile.imagePath),
                   ),
                   SizedBox(width: 8),
                   Column(
                     children: [
                       Text(
-                        '${Data.profile.name} ${Data.profile.surname}',
+                        '${AppData.profile.name} ${AppData.profile.surname}',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        Data.profile.email,
+                        AppData.profile.email,
                         style: TextStyle(
                           color: BooklyColors.neutral400,
                           fontWeight: FontWeight.bold,

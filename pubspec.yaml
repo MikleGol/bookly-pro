@@ -36,6 +36,9 @@ flutter:
     - assets/services/
     - assets/profile/
     - assets/system/
+    - assets/data/categories.json
+    - assets/data/services.json
+    - assets/data/profile.json
 
 
 flutter_launcher_icons:

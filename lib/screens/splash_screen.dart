@@ -1,7 +1,7 @@
 import 'package:bookly_pro/screens/home_shell.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_screen.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

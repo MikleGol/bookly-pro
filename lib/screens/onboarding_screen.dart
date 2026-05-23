@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 import 'login_screen.dart';
 import '../models/board.dart';
 import '../widgets/primary_button.dart';

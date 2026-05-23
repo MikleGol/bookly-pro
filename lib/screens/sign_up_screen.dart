@@ -1,6 +1,6 @@
 import 'package:bookly_pro/screens/login_screen.dart';
 import 'package:flutter/material.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 import '../widgets/primary_button.dart';
 import '../widgets/social_button.dart';
 import '../widgets/app_text_field.dart';

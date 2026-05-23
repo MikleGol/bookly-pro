@@ -1,4 +1,4 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/widgets/filter_chip_button.dart';
 import 'package:bookly_pro/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
@@ -152,9 +152,9 @@ class _BookingScreenState extends State<BookingScreen> {
 
                   const SizedBox(height: 12),
 
-                  Wrap(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 10,
-                    runSpacing: 10,
                     children: List.generate(timeParts.length, (index) {
                       final isSelected = selectedTimePartIndex == index;
 

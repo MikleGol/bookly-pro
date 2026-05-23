@@ -1,4 +1,4 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/screens/booking_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +9,7 @@ import '../widgets/primary_button.dart';
 class ServiceScreen extends StatefulWidget {
   final Service service;
 
-  const ServiceScreen({
-    super.key,
-    required this.service,
-  });
+  const ServiceScreen({super.key, required this.service});
 
   @override
   State<ServiceScreen> createState() => _ServiceScreenState();
@@ -33,6 +30,9 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
     final imageHeight = screenHeight * 0.42;
     final sheetTop = screenHeight * 0.34;
+    final List<_TagChip> tags = widget.service.tags.map((tag) {
+      return _TagChip(text: tag);
+    }).toList();
 
     return Scaffold(
       backgroundColor: BooklyColors.primary100,
@@ -42,10 +42,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
             SizedBox(
               height: imageHeight,
               width: double.infinity,
-              child: Image.asset(
-                widget.service.imagePath,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(widget.service.imagePath, fit: BoxFit.cover),
             ),
 
             SafeArea(
@@ -124,15 +121,12 @@ class _ServiceScreenState extends State<ServiceScreen> {
                               icon: CupertinoIcons.star,
                               title: 'Rating',
                               value:
-                              '${widget.service.rating} (${widget.service.reviewsCount} reviews)',
+                                  '${widget.service.rating} (${widget.service.reviewsCount} reviews)',
                             ),
 
                             const SizedBox(height: 22),
 
-                            Divider(
-                              height: 1,
-                              color: BooklyColors.neutral200,
-                            ),
+                            Divider(height: 1, color: BooklyColors.neutral200),
 
                             const SizedBox(height: 18),
 
@@ -147,12 +141,16 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
                             const SizedBox(height: 12),
 
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 8,
-                              children: widget.service.tags.map((tag) {
-                                return _TagChip(text: tag);
-                              }).toList(),
+                            SizedBox(
+                              height: 34,
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: widget.service.tags.length,
+                                itemBuilder: (context, index) {
+                                  return _TagChip(text: widget.service.tags[index]);
+                                },
+                                separatorBuilder: (_, _) => const SizedBox(width: 8),
+                              ),
                             ),
 
                             const SizedBox(height: 24),
@@ -165,7 +163,12 @@ class _ServiceScreenState extends State<ServiceScreen> {
                       price: widget.service.price,
                       focusNode: bookFocus,
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => BookingScreen(service: widget.service,)));
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) =>
+                                BookingScreen(service: widget.service),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -182,9 +185,7 @@ class _ServiceScreenState extends State<ServiceScreen> {
 class _Header extends StatelessWidget {
   final Service service;
 
-  const _Header({
-    required this.service,
-  });
+  const _Header({required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -305,11 +306,7 @@ class _InfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          icon,
-          color: BooklyColors.neutral700,
-          size: 20,
-        ),
+        Icon(icon, color: BooklyColors.neutral700, size: 20),
 
         const SizedBox(width: 12),
 
@@ -347,9 +344,7 @@ class _InfoRow extends StatelessWidget {
 class _TagChip extends StatelessWidget {
   final String text;
 
-  const _TagChip({
-    required this.text,
-  });
+  const _TagChip({required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -360,9 +355,7 @@ class _TagChip extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(999),
-        border: Border.all(
-          color: BooklyColors.neutral200,
-        ),
+        border: Border.all(color: BooklyColors.neutral200),
       ),
       child: Text(
         text,
@@ -466,17 +459,11 @@ class _CircleIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: onPressed,
-      icon: Icon(
-        icon,
-        color: iconColor ?? BooklyColors.neutral900,
-        size: 20,
-      ),
+      icon: Icon(icon, color: iconColor ?? BooklyColors.neutral900, size: 20),
       style: IconButton.styleFrom(
         backgroundColor: Colors.white.withAlpha(215),
         fixedSize: const Size(42, 42),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(14),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
       ),
     );
   }

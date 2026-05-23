@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../data.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/filter_chip_button.dart';
 import '../widgets/category_card.dart';
+import '../data/app_data.dart';
 
 final filters = ['All', 'Popular', 'Nearby'];
 
@@ -76,7 +76,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               GridView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: Data.categories.length,
+                itemCount: AppData.categories.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 10,
@@ -85,7 +85,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 ),
 
                 itemBuilder: (context, index) {
-                  return CategoryCard(category: Data.categories[index]);
+                  return CategoryCard(category: AppData.categories[index]);
                 },
               ),
             ],

@@ -1,4 +1,4 @@
-import 'package:bookly_pro/bookly_colors.dart';
+import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/models/category.dart';
 import 'package:flutter/material.dart';
 import '../models/service.dart';

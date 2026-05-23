@@ -1,13 +1,13 @@
 import 'package:bookly_pro/screens/service_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/service.dart';
-import '../bookly_colors.dart';
-import '../data.dart';
+import '../theme/bookly_colors.dart';
 import '../widgets/app_text_field.dart';
 import '../widgets/horizontal_card.dart';
 import '../widgets/horizontal_category.dart';
 import '../widgets/secondary_button.dart';
 import '../widgets/vertical_card.dart';
+import '../data/app_data.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -89,9 +89,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 210,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: Data.services.length,
+                  itemCount: AppData.services.length,
                   itemBuilder: (context, index) {
-                    final service = Data.services[index];
+                    final service = AppData.services[index];
                     return HorizontalCard(
                       service: service,
                       onTap: () => _openService(service),
@@ -115,9 +115,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: 120,
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemCount: Data.categories.length,
+                  itemCount: AppData.categories.length,
                   itemBuilder: (context, index) {
-                    final category = Data.categories[index];
+                    final category = AppData.categories[index];
                     return HorizontalCategory(category: category, onTap: () {});
                   },
                   separatorBuilder: (_, _) => const SizedBox(width: 12),
@@ -137,9 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: Data.services.length,
+                itemCount: AppData.services.length,
                 itemBuilder: (context, index) {
-                  final service = Data.services[index];
+                  final service = AppData.services[index];
                   return VerticalCard(
                     service: service,
                     onTap: () => _openService(service),
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 4),
             Text(
-              '${Data.profile.name} 👋',
+              '${AppData.profile.name} 👋',
               style: TextStyle(
                 color: BooklyColors.neutral900,
                 fontSize: 22,
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         CircleAvatar(
           radius: 22,
-          backgroundImage: AssetImage(Data.profile.imagePath),
+          backgroundImage: AssetImage(AppData.profile.imagePath),
         ),
       ],
     );

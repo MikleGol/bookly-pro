@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 
 class ProfileTile extends StatelessWidget {
   final Icon icon;

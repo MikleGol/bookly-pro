@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../bookly_colors.dart';
+import '../theme/bookly_colors.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String text;
