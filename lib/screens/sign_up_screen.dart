@@ -143,6 +143,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: 12),
 
                     Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Checkbox(
                           activeColor: BooklyColors.primary400,
@@ -150,22 +151,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           value: isChecked,
                           onChanged: (newValue) {
                             setState(() {
-                              isChecked = newValue!;
+                              isChecked = newValue ?? false;
                             });
                           },
                         ),
-                        Text(
-                          'I agree to the ',
-                          style: TextStyle(color: BooklyColors.neutral900),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Terms & Privacy Policy',
-                            style: TextStyle(
-                              color: BooklyColors.neutral900,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        Expanded(
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                'I agree to the ',
+                                style: TextStyle(
+                                  color: BooklyColors.neutral900,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  'Terms & Privacy Policy',
+                                  style: TextStyle(
+                                    color: BooklyColors.neutral900,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
@@ -194,7 +204,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           );
                           return;
                         }
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeShell()));
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => const HomeShell()),
+                          (_) => false,
+                        );
                       },
                       height: 56,
                       width: double.infinity,
@@ -253,16 +266,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     SizedBox(height: 24),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
                       children: [
                         Text('Already have an account?'),
-                        SizedBox(width: 8),
                         SecondaryButton(
                           text: 'Login',
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (_) => const LoginScreen(),
                               ),

@@ -1,13 +1,16 @@
 import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/models/category.dart';
 import 'package:flutter/material.dart';
-import '../models/service.dart';
 
 class HorizontalCategory extends StatelessWidget {
   final Category category;
   final VoidCallback onTap;
 
-  const HorizontalCategory({super.key, required this.category, required this.onTap});
+  const HorizontalCategory({
+    super.key,
+    required this.category,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,8 @@ class HorizontalCategory extends StatelessWidget {
             SizedBox(height: 4),
             Text(
               category.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: BooklyColors.neutral900,
                 fontSize: 14,

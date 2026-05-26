@@ -30,10 +30,6 @@ class _ServiceScreenState extends State<ServiceScreen> {
 
     final imageHeight = screenHeight * 0.42;
     final sheetTop = screenHeight * 0.34;
-    final List<_TagChip> tags = widget.service.tags.map((tag) {
-      return _TagChip(text: tag);
-    }).toList();
-
     return Scaffold(
       backgroundColor: BooklyColors.primary100,
       body: SizedBox.expand(
@@ -147,9 +143,12 @@ class _ServiceScreenState extends State<ServiceScreen> {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: widget.service.tags.length,
                                 itemBuilder: (context, index) {
-                                  return _TagChip(text: widget.service.tags[index]);
+                                  return _TagChip(
+                                    text: widget.service.tags[index],
+                                  );
                                 },
-                                separatorBuilder: (_, _) => const SizedBox(width: 8),
+                                separatorBuilder: (_, _) =>
+                                    const SizedBox(width: 8),
                               ),
                             ),
 

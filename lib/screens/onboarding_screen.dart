@@ -88,7 +88,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     )
                   : PrimaryButton(
                       text: 'Get Started',
-                      onPressed: (){
+                      onPressed: () {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -152,31 +152,51 @@ class OnboardingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(path, fit: BoxFit.cover, width: 360, height: 360),
-        SizedBox(height: 12),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: BooklyColors.neutral900,
-          ),
-          maxLines: 2,
-        ),
-        SizedBox(height: 12),
-        Text(
-          description,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.normal,
-            color: BooklyColors.neutral900,
-          ),
-          maxLines: 2,
-        ),
-      ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final imageSize =
+            (constraints.maxWidth < constraints.maxHeight
+                    ? constraints.maxWidth
+                    : constraints.maxHeight * 0.55)
+                .clamp(180.0, 360.0)
+                .toDouble();
+
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              path,
+              fit: BoxFit.cover,
+              width: imageSize,
+              height: imageSize,
+            ),
+            SizedBox(height: 12),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: BooklyColors.neutral900,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            SizedBox(height: 12),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.normal,
+                color: BooklyColors.neutral900,
+              ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        );
+      },
     );
   }
 }

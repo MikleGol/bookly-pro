@@ -1,9 +1,12 @@
+import 'package:bookly_pro/models/booking.dart';
+
 import '../models/category.dart';
 import '../models/service.dart';
 import '../models/profile.dart';
 import 'mock_data_source.dart';
 
 class AppData {
+  static List<Booking> bookings = [];
   static List<Category> categories = [];
   static List<Service> services = [];
   static late Profile profile;

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/bookly_colors.dart';
-
 class SocialButton extends StatelessWidget {
   final String text;
   final String assetPath;

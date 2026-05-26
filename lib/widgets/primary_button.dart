@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../theme/bookly_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -8,7 +7,14 @@ class PrimaryButton extends StatelessWidget {
   final double height;
   final double width;
 
-  const PrimaryButton({super.key, required this.text, required this.onPressed, required this.focusNode, required this.height, required this.width});
+  const PrimaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    required this.focusNode,
+    required this.height,
+    required this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,21 +24,7 @@ class PrimaryButton extends StatelessWidget {
       child: ElevatedButton(
         focusNode: focusNode,
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          overlayColor: BooklyColors.primary400,
-          backgroundColor: BooklyColors.primary400,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
-          ),
-        ),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
-            color: BooklyColors.primary200,
-          ),
-        ),
+        child: Text(text),
       ),
     );
   }

@@ -33,7 +33,7 @@ class ServiceCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 12,),
+            SizedBox(width: 12),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,6 +47,8 @@ class ServiceCard extends StatelessWidget {
                   ),
                   Text(
                     service.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: BooklyColors.neutral900,
                       fontSize: 14,
@@ -55,6 +57,8 @@ class ServiceCard extends StatelessWidget {
                   ),
                   Text(
                     service.shortDescription,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: BooklyColors.neutral500,
                       fontSize: 12,

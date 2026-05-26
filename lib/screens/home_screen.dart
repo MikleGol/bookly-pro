@@ -33,8 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 320),
         reverseTransitionDuration: const Duration(milliseconds: 260),
-        pageBuilder: (_, animation, __) => ServiceScreen(service: service),
-        transitionsBuilder: (_, animation, __, child) {
+        pageBuilder: (_, animation, child) => ServiceScreen(service: service),
+        transitionsBuilder: (_, animation, secondaryAnimation, child) {
           final tween = Tween(
             begin: const Offset(0, 1),
             end: Offset.zero,
@@ -158,28 +158,33 @@ class _HomeScreenState extends State<HomeScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Good morning,',
-              style: TextStyle(
-                color: BooklyColors.neutral900,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Good morning,',
+                style: TextStyle(
+                  color: BooklyColors.neutral900,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              '${AppData.profile.name} 👋',
-              style: TextStyle(
-                color: BooklyColors.neutral900,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+              const SizedBox(height: 4),
+              Text(
+                '${AppData.profile.name} 👋',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: BooklyColors.neutral900,
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+        const SizedBox(width: 12),
         CircleAvatar(
           radius: 22,
           backgroundImage: AssetImage(AppData.profile.imagePath),
@@ -205,12 +210,16 @@ class _SectionHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: BooklyColors.neutral900,
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+        Expanded(
+          child: Text(
+            title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              color: BooklyColors.neutral900,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         SecondaryButton(text: actionText, onPressed: onPressed),

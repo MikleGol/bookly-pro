@@ -76,10 +76,18 @@ class ProviderElement extends StatelessWidget {
             children: [
               Text(
                 topText,
-                style: TextStyle(color: BooklyColors.neutral500, fontSize: 12, fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: BooklyColors.neutral500,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Text(
                 centerText,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: BooklyColors.neutral900,
                   fontSize: 14,
@@ -88,7 +96,13 @@ class ProviderElement extends StatelessWidget {
               ),
               Text(
                 bottomText,
-                style: TextStyle(color: BooklyColors.neutral500, fontSize: 12, fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: BooklyColors.neutral500,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),

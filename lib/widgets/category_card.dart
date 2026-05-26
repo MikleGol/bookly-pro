@@ -30,8 +30,20 @@ class CategoryCard extends StatelessWidget {
               height: 100,
               width: 100,
             ),
-            Text(category.title),
-            Text('$numServices services'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                category.title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Text(
+              '$numServices services',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ],
         ),
       ),

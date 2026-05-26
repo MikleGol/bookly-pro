@@ -1,7 +1,5 @@
 import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:flutter/material.dart';
-import '../models/profile.dart';
-import '../theme/bookly_colors.dart';
 import '../widgets/profile_tile.dart';
 import '../data/app_data.dart';
 
@@ -29,24 +27,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     backgroundImage: AssetImage(AppData.profile.imagePath),
                   ),
                   SizedBox(width: 8),
-                  Column(
-                    children: [
-                      Text(
-                        '${AppData.profile.name} ${AppData.profile.surname}',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${AppData.profile.name} ${AppData.profile.surname}',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      SizedBox(height: 12),
-                      Text(
-                        AppData.profile.email,
-                        style: TextStyle(
-                          color: BooklyColors.neutral400,
-                          fontWeight: FontWeight.bold,
+                        SizedBox(height: 12),
+                        Text(
+                          AppData.profile.email,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: BooklyColors.neutral400,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),

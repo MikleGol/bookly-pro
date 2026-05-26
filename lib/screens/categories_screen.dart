@@ -21,6 +21,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   int selectedFilterIndex = 0;
 
   @override
+  void dispose() {
+    nullFocus.dispose();
+    searchFocus.dispose();
+    searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: BooklyColors.primary100,
@@ -55,8 +63,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               SizedBox(height: 12),
               Align(
                 alignment: AlignmentGeometry.centerLeft,
-                child: Row(
+                child: Wrap(
                   spacing: 10,
+                  runSpacing: 10,
                   children: List.generate(filters.length, (index) {
                     final isSelected = selectedFilterIndex == index;
 
@@ -67,25 +76,31 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                         setState(() {
                           selectedFilterIndex = index;
                         });
-                      }, selectedColor: BooklyColors.primary400,
+                      },
+                      selectedColor: BooklyColors.primary400,
                     );
                   }),
                 ),
               ),
               SizedBox(height: 12),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: AppData.categories.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  mainAxisExtent: 150
-                ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final crossAxisCount = constraints.maxWidth >= 520 ? 3 : 2;
 
-                itemBuilder: (context, index) {
-                  return CategoryCard(category: AppData.categories[index]);
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: AppData.categories.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 150,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CategoryCard(category: AppData.categories[index]);
+                    },
+                  );
                 },
               ),
             ],

@@ -33,6 +33,8 @@ class HorizontalCard extends StatelessWidget {
             SizedBox(height: 4),
             Text(
               service.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: BooklyColors.neutral900,
                 fontSize: 14,

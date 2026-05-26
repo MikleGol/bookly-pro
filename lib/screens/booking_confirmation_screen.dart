@@ -4,7 +4,8 @@ import 'package:bookly_pro/screens/success_confirmation_screen.dart';
 import 'package:bookly_pro/widgets/primary_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import '../data/app_data.dart';
+import '../models/booking.dart';
 import '../widgets/provider_card.dart';
 import '../widgets/service_card.dart';
 
@@ -26,6 +27,12 @@ class BookingConfirmation extends StatefulWidget {
 
 class _BookingConfirmationState extends State<BookingConfirmation> {
   final nullFocus = FocusNode();
+
+  @override
+  void dispose() {
+    nullFocus.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +122,10 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                   children: [
                     Text(
                       'Total',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Text(
                       '\$$total',
@@ -128,14 +138,24 @@ class _BookingConfirmationState extends State<BookingConfirmation> {
                   ],
                 ),
                 SizedBox(height: 24),
-            
+
                 PrimaryButton(
                   text: 'Confirm & Pay \$$total',
                   onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (_) => SuccessConfirmationScreen(),
+                    AppData.bookings.add(
+                      Booking(
+                        date: widget.selectedDate,
+                        time: widget.selectedTime,
+                        service: widget.service,
+                        total: total,
                       ),
+                    );
+
+                    Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(
+                        builder: (_) => const SuccessConfirmationScreen(),
+                      ),
+                      (_) => false,
                     );
                   },
                   focusNode: nullFocus,

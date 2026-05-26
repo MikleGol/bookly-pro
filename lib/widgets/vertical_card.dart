@@ -7,10 +7,7 @@ class VerticalCard extends StatelessWidget {
   final Service service;
   final VoidCallback onTap;
 
-  const VerticalCard({
-    super.key,
-    required this.service, required this.onTap,
-  });
+  const VerticalCard({super.key, required this.service, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -66,26 +63,24 @@ class VerticalCard extends StatelessWidget {
                           size: 16,
                         ),
                         const SizedBox(width: 4),
-                        Row(
-                          children: [
-                            Text(
-                              '${service.rating}',
-                              style: TextStyle(
-                                color: BooklyColors.neutral900,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
+                        Text(
+                          '${service.rating}',
+                          style: TextStyle(
+                            color: BooklyColors.neutral900,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            ' (${service.reviewsCount}) · ${service.address}',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: BooklyColors.neutral400,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
                             ),
-                            Text(
-                              ' (${service.reviewsCount}) · ${service.address}',
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: BooklyColors.neutral400,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),

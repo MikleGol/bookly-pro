@@ -131,7 +131,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (!_key.currentState!.validate()) {
                           return;
                         }
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeShell()));
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => const HomeShell()),
+                          (_) => false,
+                        );
                       },
                       height: 56,
                       width: double.infinity,
@@ -190,16 +193,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
                     SizedBox(height: 24),
 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8,
                       children: [
                         Text('Don\'t have an account?'),
-                        SizedBox(width: 8),
                         SecondaryButton(
                           text: 'Sign up',
                           onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
+                            Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                 builder: (_) => const SignUpScreen(),
                               ),

@@ -1,4 +1,3 @@
-import 'package:bookly_pro/screens/home_shell.dart';
 import 'package:flutter/material.dart';
 import 'onboarding_screen.dart';
 import '../theme/bookly_colors.dart';
@@ -20,8 +19,9 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         PageRouteBuilder(
           transitionDuration: Duration(milliseconds: 300),
-          pageBuilder: (_, __, ___) => HomeShell(),
-          transitionsBuilder: (_, animation, __, child) {
+          pageBuilder: (_, animation, secondaryAnimation) =>
+              const OnboardingScreen(),
+          transitionsBuilder: (_, animation, secondaryAnimation, child) {
             return FadeTransition(opacity: animation, child: child);
           },
         ),

@@ -2,7 +2,6 @@ import 'package:bookly_pro/theme/bookly_colors.dart';
 import 'package:bookly_pro/widgets/filter_chip_button.dart';
 import 'package:bookly_pro/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
-
 import '../models/service.dart';
 import 'booking_confirmation_screen.dart';
 
@@ -11,10 +10,7 @@ const timeParts = ['Morning', 'Afternoon', 'Evening'];
 class BookingScreen extends StatefulWidget {
   final Service service;
 
-  const BookingScreen({
-    super.key,
-    required this.service,
-  });
+  const BookingScreen({super.key, required this.service});
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();
@@ -99,10 +95,7 @@ class _BookingScreenState extends State<BookingScreen> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            color: BooklyColors.neutral900,
-          ),
+          icon: Icon(Icons.arrow_back_ios_new, color: BooklyColors.neutral900),
         ),
         title: Text(
           'Select Date & Time',
@@ -152,9 +145,10 @@ class _BookingScreenState extends State<BookingScreen> {
 
                   const SizedBox(height: 12),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Wrap(
+                    alignment: WrapAlignment.center,
                     spacing: 10,
+                    runSpacing: 10,
                     children: List.generate(timeParts.length, (index) {
                       final isSelected = selectedTimePartIndex == index;
 
@@ -183,12 +177,12 @@ class _BookingScreenState extends State<BookingScreen> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: times.length,
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        mainAxisExtent: 44,
-                      ),
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                            mainAxisExtent: 44,
+                          ),
                       itemBuilder: (context, index) {
                         final isSelected = selectedTimeIndex == index;
 
@@ -219,9 +213,7 @@ class _BookingScreenState extends State<BookingScreen> {
             onPressed: () {
               if (selectedTimeIndex == null || selectedTime.isEmpty) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Please select a time'),
-                  ),
+                  const SnackBar(content: Text('Please select a time')),
                 );
                 return;
               }
@@ -362,11 +354,15 @@ class _BottomBookingBar extends StatelessWidget {
   const _BottomBookingBar({
     required this.service,
     required this.focusNode,
-    required this.onPressed, required this.selectedDate, required this.selectedTime,
+    required this.onPressed,
+    required this.selectedDate,
+    required this.selectedTime,
   });
 
   @override
   Widget build(BuildContext context) {
+    final buttonWidth = MediaQuery.sizeOf(context).width < 360 ? 118.0 : 150.0;
+
     return SafeArea(
       top: false,
       child: Container(
@@ -437,10 +433,10 @@ class _BottomBookingBar extends StatelessWidget {
             const SizedBox(width: 12),
 
             SizedBox(
-              width: 150,
+              width: buttonWidth,
               child: PrimaryButton(
                 text: 'Continue',
-                onPressed: onPressed ?? () {},
+                onPressed: onPressed,
                 focusNode: focusNode,
                 height: 50,
                 width: double.infinity,
